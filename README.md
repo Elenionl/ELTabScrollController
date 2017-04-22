@@ -7,10 +7,10 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 [![Platform](https://img.shields.io/cocoapods/p/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 
 
-**:warning: ELTabScrollController requires Swift Version higher than 3.0.**
+* **:warning: ELTabScrollController requires Swift Version higher than 3.0.**
 
 
-**:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
+* **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
 <!-- ## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md) -->
 
 
@@ -93,6 +93,7 @@ self.switchHandler = { (index, type) in
 ```
 --------------------------
 ### Button Can Be Customized
+***:warning: ELTabScrollItem.button has lower priority compared with ELTabScrollController.buttonSelectedBackgroudColor etc.***
 * Button with title and image
 ```Swift
 let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), viewController: ctrl4, view: nil)
@@ -101,12 +102,9 @@ let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), view
 ```Swift
 public init(button: UIButton, viewController: UIViewController, view: UIView?)
 ```
-***:warning: ELTabScrollItem.button has lower priority compared with ELTabScrollController.buttonSelectedBackgroudColor etc.***
-
-
 --------------------
 ### ViewController is Easily Customizable
-
+***:warning: Settings are expected in viewDidLoad. Or will cause exception***
 ```Swift
 override func viewDidLoad() {
   super.viewDidLoad()
@@ -124,9 +122,6 @@ override func viewDidLoad() {
   }
 }
 ```
-***:warning: Settings are expected in viewDidLoad. Or will cause exception***
-
-
 -----------------
 ## Settings and Handlers Available
 
