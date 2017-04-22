@@ -1,22 +1,22 @@
-ELPickerView: Easily Used Picker View build with Swift 3
+ELTabScrollController: Easily Used Picker View build with Swift 3
 ======================================
 
-[![Build Status](https://travis-ci.org/Elenionl/ELPickerView-Swift.svg?branch=master)](https://travis-ci.org/Elenionl/ELPickerView-Swift)
-[![CocoaPods](https://img.shields.io/cocoapods/v/ELPickerView.svg?style=flat)](https://cocoapods.org/pods/ELPickerView)
-[![CocoaPods](https://img.shields.io/cocoapods/l/ELPickerView.svg?style=flat)](https://cocoapods.org/pods/ELPickerView)
-[![Platform](https://img.shields.io/cocoapods/p/ELPickerView.svg?style=flat)](https://cocoapods.org/pods/ELPickerView)
+[![Build Status](https://travis-ci.org/Elenionl/ELTabScrollController-Swift.svg?branch=master)](https://travis-ci.org/Elenionl/ELTabScrollController)
+[![CocoaPods](https://img.shields.io/cocoapods/v/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
+[![CocoaPods](https://img.shields.io/cocoapods/l/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
+[![Platform](https://img.shields.io/cocoapods/p/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 
 
-**:warning: ELPickerView requires Swift Version higher than 3.0.**
+**:warning: ELTabScrollController requires Swift Version higher than 3.0.**
 
-## 请点击[中文说明](https://github.com/Elenionl/ELPickerView-Swift/blob/master/README%20IN%20CHINESE.md)
+## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController-Swift/blob/master/README%20IN%20CHINESE.md)
 
 
 ## Screenshots
 Easily Used Picker View build with Swift 3
 
 
-![screenshots_4](https://raw.githubusercontent.com/Elenionl/ELPickerView-Swift/master/screenshots/screenshots_4.gif)
+![screenshots_4](https://raw.githubusercontent.com/Elenionl/ELTabScrollController-Swift/master/screenshots/screenshots_4.gif)
 ----------------------
 
 ## How to Install
@@ -30,8 +30,8 @@ Easily Used Picker View build with Swift 3
 -----------------------
 ### Simply add
 
-* Open [Elenionl/ELPickerView-Swift](https://github.com/Elenionl/ELPickerView-Swift) with browser
-* Download or Clone Project: ``https://github.com/Elenionl/ELPickerView-Swift.git``
+* Open [Elenionl/ELTabScrollController-Swift](https://github.com/Elenionl/ELTabScrollController-Swift) with browser
+* Download or Clone Project: ``https://github.com/Elenionl/ELTabScrollController-Swift.git``
 * Copy ``ELCustomPickerView.swift`` file to your project
 * Enjoy
 -------------
@@ -71,7 +71,7 @@ override func viewDidLoad() {
     }
 ```
 --------------
-### Instead of Delegate, ELPickerView Use Closure to Handle Callback
+### Instead of Delegate, ELTabScrollController Use Closure to Handle Callback
 
 * There are rich callbacks as follow:
 ```Swift
@@ -223,4 +223,4 @@ Hanping Xu ([Elenionl](https://github.com/Elenionl)), stellanxu@gmail.com
 --------------------------
 ## License
 
-ELPickerView is available under the MIT license, see the LICENSE file for more information.   
+ELTabScrollController is available under the MIT license, see the LICENSE file for more information.   
