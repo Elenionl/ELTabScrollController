@@ -18,11 +18,13 @@ public typealias ELSwitchHandler = (_ index: Int, _ triggerType: ELTabScrollSwit
 open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - UI
+    /// Tab including Buttons and Slider
     open lazy var tab: UIScrollView = {
         let scroll = UIScrollView(frame: .null)
         return scroll
     }()
     
+    /// This stackView holds buttons
     open lazy var tabStackView: UIStackView = {
         let stack = UIStackView(frame: .null)
         stack.axis = .horizontal
@@ -31,16 +33,19 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         return stack
     }()
     
+    /// Background of slider
     open lazy var sliderBackgroundView: UIView = {
         let view = UIView(frame: .null)
         return view
     }()
     
+    /// Slider
     open lazy var sliderView: UIView = {
         let view = UIView(frame: .null)
         return view
     }()
     
+    /// A scrollView containing a stackView of viewControllers
     open lazy var container: UIScrollView = {
         let scroll = UIScrollView(frame: .null)
         scroll.isPagingEnabled = true
@@ -48,6 +53,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         return scroll
     }()
     
+    /// A stackView containing views of viewControllers
     open lazy var containerStackView: UIStackView = {
         let stack = UIStackView(frame: .null)
         stack.axis = .horizontal
@@ -63,6 +69,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Settings
     
+    /// Items containing buttons and viewControllers
     open var items: [ELTabScrollItem]! = [] {
         didSet {
             itemsSettingHandler = { [weak self] Void in
@@ -100,10 +107,13 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// The width of the base view. Default value is screen width
     open var width: CGFloat! = UIScreen.main.bounds.size.width
     
+    /// Triggered by switch behavior
     open var switchHandler: ELSwitchHandler?
     
+    /// Height of button
     open var tabButtonHeight: CGFloat = 44 {
         didSet {
             tabStackView.snp.updateConstraints { (make) in
@@ -115,6 +125,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// Hight of slider
     open var sliderViewHeight: CGFloat = 5 {
         didSet {
             sliderBackgroundView.snp.updateConstraints { (make) in
@@ -128,6 +139,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// Font of button
     open var buttonFont: UIFont? {
         didSet {
             if let font = buttonFont {
@@ -260,6 +272,11 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Operate
     
+    /// Set the current index
+    ///
+    /// - Parameters:
+    ///   - index: index
+    ///   - animated: animated
     open func setCurrentIndex(_ index: Int, animated: Bool) {
         tabStackView.layoutIfNeeded()
         let point = CGPoint(x: width * CGFloat(items[index].button.tag), y: 0)
@@ -290,6 +307,9 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// An inner function mostly used to calculate the frame of slider
+    ///
+    /// - Parameter position: Offset of container
     open func setSliderPosition(_ position: CGFloat)  {
         let totalWidth = container.contentSize.width
         var currentLeftScreen: Int
@@ -357,9 +377,13 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     }
 }
 
+/// Item
 open class ELTabScrollItem {
+    /// Title of Button
     open var title: String?
+    /// Image of Button
     open var image: UIImage?
+    /// If setted, will override title and image
     open lazy var button: UIButton = {
         let button = UIButton(type: .custom)
         button.setTitleColor(.brown, for: .normal)
@@ -373,12 +397,21 @@ open class ELTabScrollItem {
         return button
     }()
     
+    /// Which view will be presented, should be the subView of viewController.view
     open lazy var view: UIView = {
         let view = self.viewController.view
         return view!
     }()
+    /// The child viewController
     open var viewController: UIViewController
     
+    /// Item including button and viewController
+    ///
+    /// - Parameters:
+    ///   - title: Title of button
+    ///   - image: Image of button
+    ///   - viewController: Child viewController
+    ///   - view: The showing view
     public init(title: String?, image: UIImage?, viewController: UIViewController, view: UIView?) {
         self.title = title
         self.image = image
@@ -388,6 +421,12 @@ open class ELTabScrollItem {
         }
     }
     
+    /// Item including button and viewController
+    ///
+    /// - Parameters:
+    ///   - button: The custom button
+    ///   - viewController: Child viewController
+    ///   - view: The showing view
     public init(button: UIButton, viewController: UIViewController, view: UIView?) {
         self.viewController = viewController
         if let newView = view {
