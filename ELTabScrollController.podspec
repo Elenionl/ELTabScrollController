@@ -1,23 +1,25 @@
 
 Pod::Spec.new do |s|
 
-  s.name         = "ELPickerView"
-  s.version      = "0.1.2"
-  s.summary      = "Easily Used Picker View build with Swift 3"
+  s.name         = "ELTabScrollController"
+  s.version      = "0.1.0"
+  s.summary      = "Easily Used Tab Scroll ViewController with Swift 3"
   s.description  = <<-DESC
-  ELPickerView is an easily used Picker View suit. To use ELPickerView, only three steps (- add -show -hide) is need.
-  ELPickerView is flexable too, there are rich document and annotation for ELPickerView.
+  ELTabScrollController is an easily used Tab Scroll Controller suit. It is build with pure code without storyboard or xib, making it easy to inherate.
+  (Drawing lines is quite boring, and may cause bugs hard to fix)
+  ELPickerView is easy to use as well as flexable. there are rich document and annotation for ELTabScrollController.
                    DESC
-  s.homepage     = "https://github.com/Elenionl/ELPickerView-Swift"
+  s.homepage     = "https://github.com/Elenionl/ELTabScrollController"
   s.screenshots  = "https://raw.githubusercontent.com/Elenionl/ELPickerView-Swift/master/screenshots/screenshots_4.gif"
   s.license      = { :type => 'MIT', :file => 'LICENSE.md' }
   s.author             = { "Hanping Xu" => "stellanxu@gmail.com" }
   s.social_media_url   = "https://github.com/Elenionl"
-  s.platform     = :ios, '8.0'
-  s.source       = { :git => "https://github.com/Elenionl/ELPickerView-Swift.git", :tag => "#{s.version}" }
-  s.source_files  = "ELPickerView/ELPickerView/*.swift"
+  s.platform     = :ios, '9.0'
+  s.source       = { :git => "https://github.com/Elenionl/ELTabScrollController.git", :tag => "#{s.version}" }
+  s.source_files  = "ELTabScrollController/ELTabScrollController/*.swift"
   s.requires_arc = true
   s.frameworks = 'UIKit'
+  s.dependency 'SnapKit'
 end
-# pod spec lint ELPickerView.podspec
-# pod trunk push ELPickerView.podspec
+# pod spec lint ELTabScrollController.podspec
+# pod trunk push ELTabScrollController.podspec
