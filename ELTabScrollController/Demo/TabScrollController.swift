@@ -28,8 +28,8 @@ class TabScrollController: ELTabScrollController {
     }
     
     override func viewDidLoad() {
-        self.title = "Demo"
         super.viewDidLoad()
+        self.title = "Demo"
         tab.backgroundColor = UIColor.orange
         sliderView.backgroundColor = .white
         container.backgroundColor = UIColor.lightGray

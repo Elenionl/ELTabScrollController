@@ -1,22 +1,22 @@
-ELTabScrollController: Easily Used Picker View build with Swift 3
+ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 ======================================
 
-[![Build Status](https://travis-ci.org/Elenionl/ELTabScrollController-Swift.svg?branch=master)](https://travis-ci.org/Elenionl/ELTabScrollController)
+[![Build Status](https://travis-ci.org/Elenionl/ELTabScrollController.svg?branch=master)](https://travis-ci.org/Elenionl/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/v/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/l/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 [![Platform](https://img.shields.io/cocoapods/p/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 
 
 **:warning: ELTabScrollController requires Swift Version higher than 3.0.**
-
-## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController-Swift/blob/master/README%20IN%20CHINESE.md)
+**:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
+<!-- ## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md) -->
 
 
 ## Screenshots
-Easily Used Picker View build with Swift 3
+Easily Used Tab Scroll ViewController build with Swift 3
 
 
-![screenshots_4](https://raw.githubusercontent.com/Elenionl/ELTabScrollController-Swift/master/screenshots/screenshots_4.gif)
+![screenshots_1](https://raw.githubusercontent.com/Elenionl/ELTabScrollController/master/screenshots/2017-04-23%2000.40.02.gif)
 ----------------------
 
 ## How to Install
@@ -24,194 +24,139 @@ Easily Used Picker View build with Swift 3
 ### Using [CocoaPods](http://cocoapods.org)
 
 * Add this line to your ``podfile`` :
-``pod 'RxSwift'``
+``pod 'ELTabScrollController'``
 * Run `pod install` with Terminal
 * Then everything is done!
 -----------------------
 ### Simply add
 
-* Open [Elenionl/ELTabScrollController-Swift](https://github.com/Elenionl/ELTabScrollController-Swift) with browser
-* Download or Clone Project: ``https://github.com/Elenionl/ELTabScrollController-Swift.git``
-* Copy ``ELCustomPickerView.swift`` file to your project
+* Open [Elenionl/ELTabScrollController](https://github.com/Elenionl/ELTabScrollController) with browser
+* Download or Clone Project: ``https://github.com/Elenionl/ELTabScrollController.git``
+* Copy ``ELCustomPickerView.swift`` ``UIKit+EL.swift`` file to your project
 * Enjoy
 -------------
 
 ## How to Use
 
-### If you want to show a Picker View in your application. Simply do these two steps:
+### If you want to show a Tab Scroll ViewController in your application. Simply do these two steps:
 * init
 ```Swift
-lazy var customPickerView: ELCustomPickerView<String> = {
-    return ELCustomPickerView<String>(pickerType: .singleComponent, items: [
-        "Row 0"
-        , "Row 1"
-        , "Row 2"
-        , "Row 3"
-        , "Row 4"
-        , "Row 5"
-        ])
-}
+class TabScrollController: ELTabScrollController {
+    // MARK: - LifeCircle
+    init() {
+        super.init(width: nil, type: nil)
+    }
 ```
-* show
+* add Items
 ```Swift
 override func viewDidLoad() {
-        super.viewDidLoad()
-        customPickerView.show(viewController: self, animated: true)
+  super.init(width: nil, type: nil)
+  let ctrl1 = ViewController(nibName: nil, bundle: nil)
+  let ctrl2 = ViewController(nibName: nil, bundle: nil)
+  let ctrl3 = ViewController(nibName: nil, bundle: nil)
+  let ctrl4 = ViewController(nibName: nil, bundle: nil)
+  let item1 = ELTabScrollItem(title: "Tab 1", image: nil, viewController: ctrl1, view: nil)
+  let item2 = ELTabScrollItem(title: "Tab 2", image: nil, viewController: ctrl2, view: nil)
+  let item3 = ELTabScrollItem(title: "Tab 3", image: nil, viewController: ctrl3, view: nil)
+  let item4 = ELTabScrollItem(title: "Tab 4", image: nil, viewController: ctrl4, view: nil)
+  items = [item1, item2, item3, item4]
 }
 ```
 ----------------------
-### If You Want the Translucent Background to Cover the Navigation Bar and the Tab Background
-
-* Just let the window show Picker View like this:
+### If You Want to Use Other View of the Child ViewController
 
 ```Swift
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        customPickerView.show(viewController: nil, animated: true)
-    }
+    let ctrl1 = ViewController(nibName: nil, bundle: nil)
+    let item1 = ELTabScrollItem(title: "Tab 1", image: nil, viewController: ctrl1, view: ctrl1.tableView)
 ```
 --------------
-### Instead of Delegate, ELTabScrollController Use Closure to Handle Callback
+### Handler Triggered by Switch
 
-* There are rich callbacks as follow:
+* Get notified when the pages switch
 ```Swift
-        customPickerView.leftButtoTapHandler = { [weak self] (view: ELCustomPickerView<String>?, chosenIndex: Int, chosenItem: (key: String, content: String)) in
-            let hide = true
-            let animated = true
-            self?.logLabel.text = "Did Tap Left Button. <Index: \(chosenIndex)> <chosenItem: \(chosenItem)> <Hide: \(hide)> <Animated: \(animated)>"
-            print(self?.logLabel.text ?? "")
-            return (hide, animated)
-        }
-```
-
-* And here is the define and meaning of the handler:
-
-```Swift
-    /// Triggered when Left Button is tapped.
-    //  view: the CustomPickerView
-    //  chosenIndex: the current chosen index of row in Picker View
-    //  chosenItem: the Item connected with the chosen row
-    //  shouldHide: tell the Picker View whether it should be hide  Default value is true
-    //  animated: tell the Picker View whether the hide action should have animation  Default value is true
-    public var leftButtoTapHandler: ((_ view: ELCustomPickerView?, _ chosenIndex: Int, _ chosenItem: T) -> (shouldHide: Bool, animated: Bool))?
-```
---------------------------
-### You Can Let Users Pick Between Instance, Struct, Enum, Tuple
-
-* Add whatever kind of items when init:
-```Swift
-typealias CustomView = ELCustomPickerView<(key: String, content: String)>
-...
-let view = CustomView(pickerType: .singleComponent, items: [
-          ("00", "Row 0")
-          , ("02", "Row 1")
-          , ("04", "Row 2")
-          , ("06", "Row 3")
-          , ("09", "Row 4")
-          , ("11", "Row 5")
-          ])
-```
-
-* Give a handler to transform item into a String kind var
-```Swift
-view.itemConfigHandler = { (key: String, content: String) in
-    return content
+self.switchHandler = { (index, type) in
+    print(index, type)
 }
 ```
-
-* Then Done
+* The Log is like follow:
+```Swift
+2 buttonTap
+2 buttonTap
+3 buttonTap
+1 buttonTap
+1 buttonTap
+0 scroll
+0 scroll
+1 scroll
+```
+--------------------------
+### Button Can Be Customized
+* Button with title and image
+```Swift
+let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), viewController: ctrl4, view: nil)
+```
+* Custom button by your self
+```Swift
+public init(button: UIButton, viewController: UIViewController, view: UIView?)
+```
+***:warning: ELTabScrollItem.button has lower priority compared with ELTabScrollController.buttonSelectedBackgroudColor etc.***
 --------------------
-### View is Easily Customizable
+### ViewController is Easily Customizable
 
 ```Swift
-        view.blackBackground = true
-        view.isTitleBarHidden = false
-        view.isTapBackgroundEnabled = true
-        view.leftButton.setTitle("LEFT", for: .normal)
-        view.rightButton.setTitle("RIGHT", for: .normal)
-        view.title.text = "TITLE"
-        view.foregroundView.picker.backgroundColor = UIColor.white
-        view.foregroundView.bottomDivider.isHidden = true
+override func viewDidLoad() {
+  super.viewDidLoad()
+  self.title = "Demo"
+  tab.backgroundColor = UIColor.orange
+  sliderView.backgroundColor = .white
+  container.backgroundColor = UIColor.lightGray
+  tabButtonHeight = 66
+  sliderViewHeight = 10
+  buttonFont = UIFont.boldSystemFont(ofSize: 18)
+  buttonSelectedTitleColor = UIColor.white
+  buttonNormalTitleColor = UIColor.lightGray
+  switchHandler = { (index, type) in
+    print(index, type)
+}
 ```
+***:warning: Settings are expected in viewDidLoad. Or will cause exception***
 -----------------
 ## Settings and Handlers Available
 
 ```Swift
 // MARK: - Settings
 
-/// Type of Picker View
-public let pickerType: ELCustomPickerViewType
+/// Items containing buttons and viewControllers
+open var items: [ELTabScrollItem]! = []
 
-/// Items used to config Picker View rows  Default value is []
-public var items: [T]
+/// The width of the base view. Default value is screen width
+open var width: CGFloat! = UIScreen.main.bounds.size.width
 
-/// Background of the screen  Default value is true
-public var blackBackground: Bool
+/// Triggered by switch behavior
+open var switchHandler: ELSwitchHandler?
 
-/// Set Title Bar hidden or not  Default value is false
-public var isTitleBarHidden = false
+/// Height of button
+open var tabButtonHeight: CGFloat = 44
 
-/// Set Taping Background to hide Picker View enabled or not  Default value is true
-public var isTapBackgroundEnabled = true
+/// Hight of slider
+open var sliderViewHeight: CGFloat = 5
 
-/// Left Button of the Title Bar, shortcut to foregroundView.leftButton
-public lazy var leftButton: UIButton
+/// Font of button
+open var buttonFont: UIFont?
 
-/// Right Button of the Title Bar, shortcut to foregroundView.rightButton
-public lazy var rightButton: UIButton
+open var buttonSelectedBackgroudColor: UIColor?
 
-/// Title of the Title Bar, shortcut to foregroundView.title
-public lazy var title: UILabel
+open var buttonNormalBackgroudColor: UIColor?
 
+open var buttonSelectedTitleColor: UIColor?
 
-// MARK: - Handler
+open var buttonNormalTitleColor: UIColor?
 
-/// Function used to transform Item into String. If the Item is String kind, itemConfigHandler is not necessory to be set.
-public var itemConfigHandler: ((T) -> String)?
-/// Triggered when Left Button is tapped.
-//  view: the CustomPickerView
-//  chosenIndex: the current chosen index of row in Picker View
-//  chosenItem: the Item connected with the chosen row
-//  shouldHide: tell the Picker View whether it should be hide  Default value is true
-//  animated: tell the Picker View whether the hide action should have animation  Default value is true
-public var leftButtoTapHandler: ((_ view: ELCustomPickerView?, _ chosenIndex: Int, _ chosenItem: T) -> (shouldHide: Bool, animated: Bool))?
-/// Triggered when Right Button is tapped.
-//  view: the CustomPickerView
-//  chosenIndex: the current chosen index of row in Picker View
-//  chosenItem: the Item connected with the chosen row
-//  shouldHide: tell the Picker View whether it should be hide  Default value is true
-//  animated: tell the Picker View whether the hide action should have animation  Default value is true
-public var rightButtoTapHandler: ((_ view: ELCustomPickerView?, _ chosenIndex: Int, _ chosenItem: T) -> (shouldHide: Bool, animated: Bool))?
-/// Triggered when user picked one row in Picker View.
-//  view: the CustomPickerView
-//  chosenIndex: the current chosen index of row in Picker View
-//  chosenItem: the Item connected with the chosen row
-//  shouldHide: tell the Picker View whether it should be hide  Default value is false
-//  animated: tell the Picker View whether the hide action should have animation   Default value is false
-public var didScrollHandler: ((_ view: ELCustomPickerView?, _ chosenIndex: Int, _ chosenItem: T) -> (shouldHide: Bool, animated: Bool))?
-/// Triggered when Picker View will show
-public var willShowHandler: ((_ view: ELCustomPickerView?) -> Void)?
-/// Triggered when Picker View did show
-public var didShowHandler: ((_ view: ELCustomPickerView?) -> Void)?
-/// Triggered when Picker View will hide
-public var willHideHandler: ((_ view: ELCustomPickerView?) -> Void)?
-/// Triggered when Picker View did hide
-public var didHideHandler: ((_ view: ELCustomPickerView?) -> Void)?
-lazy var tapBackground: UITapGestureRecognizer = {
-    let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapBackground(_:)))
-    gesture.numberOfTapsRequired = 1
-    return gesture
-}()
-
-// MARK: - Views
-
-/// The bottom view containing Title Bar and Picker
-public lazy var foregroundView: ELPickerForegroundView
 ```
 ------------
 ## Requirements
 
-* Xcode 8.0
+* Xcode 9.0
 * Swift 3.0
 * Using ARC
 --------------
