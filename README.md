@@ -158,9 +158,10 @@ open var buttonNormalTitleColor: UIColor?
 ------------
 ## Requirements
 
-* Xcode 9.0
+* Xcode 8.0
 * Swift 3.0
 * Using ARC
+* iOS 9.0
 --------------
 
 ## TODO
