@@ -8,6 +8,8 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 
 
 **:warning: ELTabScrollController requires Swift Version higher than 3.0.**
+
+
 **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
 <!-- ## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md) -->
 
@@ -50,7 +52,7 @@ class TabScrollController: ELTabScrollController {
 * add Items
 ```Swift
 override func viewDidLoad() {
-  super.init(width: nil, type: nil)
+  super.viewDidLoad()
   let ctrl1 = ViewController(nibName: nil, bundle: nil)
   let ctrl2 = ViewController(nibName: nil, bundle: nil)
   let ctrl3 = ViewController(nibName: nil, bundle: nil)
@@ -100,6 +102,8 @@ let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), view
 public init(button: UIButton, viewController: UIViewController, view: UIView?)
 ```
 ***:warning: ELTabScrollItem.button has lower priority compared with ELTabScrollController.buttonSelectedBackgroudColor etc.***
+
+
 --------------------
 ### ViewController is Easily Customizable
 
@@ -117,9 +121,12 @@ override func viewDidLoad() {
   buttonNormalTitleColor = UIColor.lightGray
   switchHandler = { (index, type) in
     print(index, type)
+  }
 }
 ```
 ***:warning: Settings are expected in viewDidLoad. Or will cause exception***
+
+
 -----------------
 ## Settings and Handlers Available
 
