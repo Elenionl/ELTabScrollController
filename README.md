@@ -162,6 +162,12 @@ open var buttonNormalTitleColor: UIColor?
 * Swift 3.0
 * Using ARC
 --------------
+
+## TODO
+
+* [] More Tab Style
+* [] More Slider Style
+
 ## Author
 
 Hanping Xu ([Elenionl](https://github.com/Elenionl)), stellanxu@gmail.com
