@@ -12,16 +12,26 @@
 		2C4DD9661EAB9EF60038FEA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9641EAB9EF60038FEA9 /* Main.storyboard */; };
 		2C4DD9681EAB9EF60038FEA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */; };
 		2C4DD96B1EAB9EF60038FEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9691EAB9EF60038FEA9 /* LaunchScreen.storyboard */; };
+		2C4DD9731EAB9F0B0038FEA9 /* ELTabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9721EAB9F0B0038FEA9 /* ELTabScrollController.swift */; };
+		2C4DD9771EABA11D0038FEA9 /* UIKit+EL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9761EABA11D0038FEA9 /* UIKit+EL.swift */; };
+		2C4DD9791EABAE890038FEA9 /* TabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9781EABAE890038FEA9 /* TabScrollController.swift */; };
+		645AA19FE7EEE61C059B837F /* Pods_ELTabScrollController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E99EEE1B32470090F09653 /* Pods_ELTabScrollController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2C4DD95D1EAB9EF60038FEA9 /* ELTabScrollController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELTabScrollController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2C4DD9601EAB9EF60038FEA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C4DD9621EAB9EF60038FEA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2C4DD9601EAB9EF60038FEA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
+		2C4DD9621EAB9EF60038FEA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
 		2C4DD9651EAB9EF60038FEA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
 		2C4DD96A1EAB9EF60038FEA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		2C4DD96C1EAB9EF60038FEA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C4DD96C1EAB9EF60038FEA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		2C4DD9721EAB9F0B0038FEA9 /* ELTabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ELTabScrollController.swift; path = ../ELTabScrollController.swift; sourceTree = "<group>"; };
+		2C4DD9761EABA11D0038FEA9 /* UIKit+EL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+EL.swift"; sourceTree = "<group>"; };
+		2C4DD9781EABAE890038FEA9 /* TabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabScrollController.swift; sourceTree = "<group>"; };
+		69284B6DCFBB266E28B93948 /* Pods-ELTabScrollController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ELTabScrollController.release.xcconfig"; path = "Pods/Target Support Files/Pods-ELTabScrollController/Pods-ELTabScrollController.release.xcconfig"; sourceTree = "<group>"; };
+		B7E99EEE1B32470090F09653 /* Pods_ELTabScrollController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ELTabScrollController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F880651A76368C30B5C4159E /* Pods-ELTabScrollController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ELTabScrollController.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ELTabScrollController/Pods-ELTabScrollController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +39,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				645AA19FE7EEE61C059B837F /* Pods_ELTabScrollController.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1219D6F1CDFC2318DB586827 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B7E99EEE1B32470090F09653 /* Pods_ELTabScrollController.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2C4DD9541EAB9EF60038FEA9 = {
 			isa = PBXGroup;
 			children = (
 				2C4DD95F1EAB9EF60038FEA9 /* ELTabScrollController */,
 				2C4DD95E1EAB9EF60038FEA9 /* Products */,
+				E797F9031ED7E2EB8F3CA812 /* Pods */,
+				1219D6F1CDFC2318DB586827 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,14 +75,42 @@
 		2C4DD95F1EAB9EF60038FEA9 /* ELTabScrollController */ = {
 			isa = PBXGroup;
 			children = (
+				2C4DD9751EAB9F280038FEA9 /* ELTabScrollController */,
+				2C4DD9741EAB9F1A0038FEA9 /* Demo */,
+			);
+			path = ELTabScrollController;
+			sourceTree = "<group>";
+		};
+		2C4DD9741EAB9F1A0038FEA9 /* Demo */ = {
+			isa = PBXGroup;
+			children = (
 				2C4DD9601EAB9EF60038FEA9 /* AppDelegate.swift */,
+				2C4DD9781EABAE890038FEA9 /* TabScrollController.swift */,
 				2C4DD9621EAB9EF60038FEA9 /* ViewController.swift */,
 				2C4DD9641EAB9EF60038FEA9 /* Main.storyboard */,
 				2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */,
 				2C4DD9691EAB9EF60038FEA9 /* LaunchScreen.storyboard */,
 				2C4DD96C1EAB9EF60038FEA9 /* Info.plist */,
 			);
+			path = Demo;
+			sourceTree = "<group>";
+		};
+		2C4DD9751EAB9F280038FEA9 /* ELTabScrollController */ = {
+			isa = PBXGroup;
+			children = (
+				2C4DD9721EAB9F0B0038FEA9 /* ELTabScrollController.swift */,
+				2C4DD9761EABA11D0038FEA9 /* UIKit+EL.swift */,
+			);
 			path = ELTabScrollController;
+			sourceTree = "<group>";
+		};
+		E797F9031ED7E2EB8F3CA812 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F880651A76368C30B5C4159E /* Pods-ELTabScrollController.debug.xcconfig */,
+				69284B6DCFBB266E28B93948 /* Pods-ELTabScrollController.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +120,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C4DD96F1EAB9EF60038FEA9 /* Build configuration list for PBXNativeTarget "ELTabScrollController" */;
 			buildPhases = (
+				891C629F526D8042EDFA6FF8 /* [CP] Check Pods Manifest.lock */,
 				2C4DD9591EAB9EF60038FEA9 /* Sources */,
 				2C4DD95A1EAB9EF60038FEA9 /* Frameworks */,
 				2C4DD95B1EAB9EF60038FEA9 /* Resources */,
+				B185E7B699C1CBCEBEEBF5DF /* [CP] Embed Pods Frameworks */,
+				E4BE647EE92E2179BDEDA943 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -131,13 +183,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		891C629F526D8042EDFA6FF8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B185E7B699C1CBCEBEEBF5DF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ELTabScrollController/Pods-ELTabScrollController-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4BE647EE92E2179BDEDA943 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ELTabScrollController/Pods-ELTabScrollController-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2C4DD9591EAB9EF60038FEA9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C4DD9731EAB9F0B0038FEA9 /* ELTabScrollController.swift in Sources */,
+				2C4DD9791EABAE890038FEA9 /* TabScrollController.swift in Sources */,
 				2C4DD9631EAB9EF60038FEA9 /* ViewController.swift in Sources */,
 				2C4DD9611EAB9EF60038FEA9 /* AppDelegate.swift in Sources */,
+				2C4DD9771EABA11D0038FEA9 /* UIKit+EL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +253,7 @@
 				2C4DD9651EAB9EF60038FEA9 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		2C4DD9691EAB9EF60038FEA9 /* LaunchScreen.storyboard */ = {
@@ -158,6 +262,7 @@
 				2C4DD96A1EAB9EF60038FEA9 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -258,9 +363,11 @@
 		};
 		2C4DD9701EAB9EF60038FEA9 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F880651A76368C30B5C4159E /* Pods-ELTabScrollController.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ELTabScrollController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elenion.ELTabScrollController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -270,9 +377,11 @@
 		};
 		2C4DD9711EAB9EF60038FEA9 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 69284B6DCFBB266E28B93948 /* Pods-ELTabScrollController.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = ELTabScrollController/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.elenion.ELTabScrollController;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -299,6 +408,7 @@
 				2C4DD9711EAB9EF60038FEA9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
