@@ -46,7 +46,15 @@ Easily Used Tab Scroll ViewController build with Swift 3
 class TabScrollController: ELTabScrollController {
     // MARK: - LifeCircle
     init() {
-        super.init(width: nil, type: nil)
+        super.init()
+    }
+```
+Or spicify width and type
+```Swift
+class TabScrollController: ELTabScrollController {
+    // MARK: - LifeCircle
+    init() {
+        super.init(width: 200, type: .equal_scrollable)
     }
 ```
 * add Items
