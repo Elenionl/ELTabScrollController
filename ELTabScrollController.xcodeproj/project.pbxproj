@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C2F58481EBCD32F0057F62F /* UnscrollableTabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2F58471EBCD32F0057F62F /* UnscrollableTabScrollController.swift */; };
+		2C2F584A1EBCD3930057F62F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2F58491EBCD3930057F62F /* HomeController.swift */; };
 		2C4DD9661EAB9EF60038FEA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9641EAB9EF60038FEA9 /* Main.storyboard */; };
 		2C4DD9681EAB9EF60038FEA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */; };
 		2C4DD96B1EAB9EF60038FEA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C4DD9691EAB9EF60038FEA9 /* LaunchScreen.storyboard */; };
 		2C4DD9771EABA11D0038FEA9 /* UIKit+EL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9761EABA11D0038FEA9 /* UIKit+EL.swift */; };
 		2C4DD9931EABC0C70038FEA9 /* ELTabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9921EABC0C70038FEA9 /* ELTabScrollController.swift */; };
 		2C4DD9971EABC1030038FEA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9941EABC1030038FEA9 /* AppDelegate.swift */; };
-		2C4DD9981EABC1030038FEA9 /* TabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9951EABC1030038FEA9 /* TabScrollController.swift */; };
+		2C4DD9981EABC1030038FEA9 /* ScrollableTabScrollController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9951EABC1030038FEA9 /* ScrollableTabScrollController.swift */; };
 		2C4DD9991EABC1030038FEA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4DD9961EABC1030038FEA9 /* ViewController.swift */; };
 		645AA19FE7EEE61C059B837F /* Pods_ELTabScrollController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7E99EEE1B32470090F09653 /* Pods_ELTabScrollController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C2F58471EBCD32F0057F62F /* UnscrollableTabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnscrollableTabScrollController.swift; sourceTree = "<group>"; };
+		2C2F58491EBCD3930057F62F /* HomeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		2C4DD95D1EAB9EF60038FEA9 /* ELTabScrollController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ELTabScrollController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C4DD9651EAB9EF60038FEA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
@@ -27,7 +31,7 @@
 		2C4DD9761EABA11D0038FEA9 /* UIKit+EL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIKit+EL.swift"; sourceTree = "<group>"; };
 		2C4DD9921EABC0C70038FEA9 /* ELTabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ELTabScrollController.swift; sourceTree = "<group>"; };
 		2C4DD9941EABC1030038FEA9 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2C4DD9951EABC1030038FEA9 /* TabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabScrollController.swift; sourceTree = "<group>"; };
+		2C4DD9951EABC1030038FEA9 /* ScrollableTabScrollController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableTabScrollController.swift; sourceTree = "<group>"; };
 		2C4DD9961EABC1030038FEA9 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		69284B6DCFBB266E28B93948 /* Pods-ELTabScrollController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ELTabScrollController.release.xcconfig"; path = "Pods/Target Support Files/Pods-ELTabScrollController/Pods-ELTabScrollController.release.xcconfig"; sourceTree = "<group>"; };
 		B7E99EEE1B32470090F09653 /* Pods_ELTabScrollController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ELTabScrollController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,7 +89,9 @@
 			isa = PBXGroup;
 			children = (
 				2C4DD9941EABC1030038FEA9 /* AppDelegate.swift */,
-				2C4DD9951EABC1030038FEA9 /* TabScrollController.swift */,
+				2C2F58491EBCD3930057F62F /* HomeController.swift */,
+				2C4DD9951EABC1030038FEA9 /* ScrollableTabScrollController.swift */,
+				2C2F58471EBCD32F0057F62F /* UnscrollableTabScrollController.swift */,
 				2C4DD9961EABC1030038FEA9 /* ViewController.swift */,
 				2C4DD9641EAB9EF60038FEA9 /* Main.storyboard */,
 				2C4DD9671EAB9EF60038FEA9 /* Assets.xcassets */,
@@ -238,8 +244,10 @@
 			files = (
 				2C4DD9991EABC1030038FEA9 /* ViewController.swift in Sources */,
 				2C4DD9971EABC1030038FEA9 /* AppDelegate.swift in Sources */,
+				2C2F584A1EBCD3930057F62F /* HomeController.swift in Sources */,
+				2C2F58481EBCD32F0057F62F /* UnscrollableTabScrollController.swift in Sources */,
 				2C4DD9931EABC0C70038FEA9 /* ELTabScrollController.swift in Sources */,
-				2C4DD9981EABC1030038FEA9 /* TabScrollController.swift in Sources */,
+				2C4DD9981EABC1030038FEA9 /* ScrollableTabScrollController.swift in Sources */,
 				2C4DD9771EABA11D0038FEA9 /* UIKit+EL.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

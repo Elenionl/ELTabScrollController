@@ -16,6 +16,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .null, style: UITableViewStyle.grouped)
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UITableViewCell")

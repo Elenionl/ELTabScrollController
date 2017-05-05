@@ -20,7 +20,7 @@ public enum ELTabScrollSwitchTriggerType {
 
 public enum ELTabBarType {
     case equal_unscrollable
-//    case equal_scrollable
+    case equal_scrollable
 //    case accordingToContent_unscrollable
 //    case accordingToContent_scrollable
 }
@@ -33,6 +33,8 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     /// Tab including Buttons and Slider
     open lazy var tab: UIScrollView = {
         let scroll = UIScrollView(frame: .null)
+        scroll.showsHorizontalScrollIndicator = false
+        scroll.showsVerticalScrollIndicator = false
         return scroll
     }()
     
@@ -78,7 +80,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     var isViewDidLoadExecuted = false
     var itemsSettingHandler: (() -> Void)?
-    
+    var typeSettingHandler: (() -> Void)?
     // MARK: - Settings
     
     /// Items containing buttons and viewControllers
@@ -212,6 +214,10 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
             itemsSettingHandler?()
             itemsSettingHandler = nil
         }
+        if (typeSettingHandler != nil) {
+            typeSettingHandler?()
+            typeSettingHandler = nil
+        }
         isViewDidLoadExecuted = true
     }
 
@@ -249,15 +255,11 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    public convenience init() {
-        self.init(width: nil, type: nil)
-    }
-    
-    public init(width: CGFloat?, type: ELTabBarType?) {
+    public init(width: CGFloat = UIScreen.main.bounds.size.width, type: ELTabBarType = ELTabBarType.equal_unscrollable) {
         super.init(nibName: nil, bundle: nil)
         defer {
-            self.width = width ?? UIScreen.main.bounds.size.width
-            self.tabBarType = type ?? .equal_unscrollable
+            self.width = width
+            self.tabBarType = type
         }
     }
     
@@ -310,12 +312,41 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
-    open var tabBarType: ELTabBarType! = ELTabBarType.equal_unscrollable {
+    open var tabBarType: ELTabBarType = ELTabBarType.equal_unscrollable {
         didSet {
-            tabStackView.snp.updateConstraints { (make) in
-                make.width.equalTo(width)
+            typeSettingHandler = { [weak self] in
+                if let strongSelf = self {
+                    switch strongSelf.tabBarType {
+                    case .equal_unscrollable:
+                        strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                            make.left.top.right.equalTo(strongSelf.tab)
+                            make.height.equalTo(strongSelf.tabButtonHeight)
+                            make.width.equalTo(strongSelf.width)
+                        }
+                        strongSelf.tabStackView.distribution = .fillEqually
+                    case .equal_scrollable:
+                        var buttonWidth: CGFloat = 0.0
+                        for item in strongSelf.items {
+                            item.button.sizeToFit()
+                            if item.button.frame.width > buttonWidth {
+                                buttonWidth = item.button.frame.width
+                            }
+                        }
+                        buttonWidth += 30
+                        strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                            make.left.top.right.equalTo(strongSelf.tab)
+                            make.height.equalTo(strongSelf.tabButtonHeight)
+                            make.width.equalTo(buttonWidth * CGFloat(strongSelf.items.count))
+                        }
+                        strongSelf.tabStackView.distribution = .fillEqually
+                    }
+                    strongSelf.setCurrentIndex(strongSelf._currentIndex, animated: false)
+                }
             }
-            tabStackView.distribution = .fillEqually
+            if isViewDidLoadExecuted && (typeSettingHandler != nil) {
+                typeSettingHandler?()
+                typeSettingHandler = nil
+            }
         }
     }
     
@@ -386,6 +417,14 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         sliderView.frame.origin.y = 0
         CGRect.set(width: sliderWidth, forView: sliderView, alignment: .center)
         CGRect.set(height: sliderViewHeight, forView: sliderView, alignment: .top)
+        if (sliderView.frame.origin.x - tab.contentOffset.x) < 0 {
+            let offset = sliderView.frame.origin.x < 0 ? 0 : sliderView.frame.origin.x
+            tab.setContentOffset(CGPoint(x: offset, y: 0), animated: false)
+        }
+        if (sliderView.frame.origin.x + sliderView.frame.width - tab.contentOffset.x) > self.width {
+            let offset = sliderView.frame.origin.x + sliderView.frame.width > tab.contentSize.width ? (tab.contentSize.width - self.width) : (sliderView.frame.origin.x + sliderView.frame.width - self.width)
+            tab.setContentOffset(CGPoint(x: offset, y: 0), animated: false)
+        }
     }
 }
 

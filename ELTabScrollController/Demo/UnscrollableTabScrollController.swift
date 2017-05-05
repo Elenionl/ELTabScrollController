@@ -12,10 +12,10 @@
 
 import UIKit
 
-class TabScrollController: ELTabScrollController {
+class UnscrollableTabScrollController: ELTabScrollController {
     // MARK: - LifeCircle
     init() {
-        super.init(width: nil, type: nil)
+        super.init()
         let ctrl1 = ViewController(nibName: nil, bundle: nil)
         let ctrl2 = ViewController(nibName: nil, bundle: nil)
         let ctrl3 = ViewController(nibName: nil, bundle: nil)
@@ -33,7 +33,7 @@ class TabScrollController: ELTabScrollController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Demo"
+        self.title = "Equal UnScrollable"
         tab.backgroundColor = UIColor.orange
         sliderView.backgroundColor = .white
         container.backgroundColor = UIColor.lightGray
