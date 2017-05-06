@@ -21,8 +21,8 @@ public enum ELTabScrollSwitchTriggerType {
 public enum ELTabBarType {
     case equal_unscrollable
     case equal_scrollable
-//    case accordingToContent_unscrollable
-//    case accordingToContent_scrollable
+    case unequal_unscrollable
+    case unequal_scrollable
 }
 
 public typealias ELSwitchHandler = (_ index: Int, _ triggerType: ELTabScrollSwitchTriggerType) -> Void
@@ -79,11 +79,23 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     // MARK: - Flags
     
     var isViewDidLoadExecuted = false
+    
     var itemsSettingHandler: (() -> Void)?
+    
     var typeSettingHandler: (() -> Void)?
+    
+    private var _currentIndex: Int = 0
+    
     // MARK: - Settings
     
     /// Items containing buttons and viewControllers
+    
+    open var tabBarType: ELTabBarType = ELTabBarType.equal_unscrollable {
+        didSet {
+            rearrangeTab()
+        }
+    }
+    
     open var items: [ELTabScrollItem]! = [] {
         didSet {
             itemsSettingHandler = { [weak self] Void in
@@ -92,6 +104,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
                         strongSelf.tabStackView.removeArrangedSubview(item.button)
                         item.view.snp.removeConstraints()
                         item.view.removeFromSuperview()
+                        item.button.removeTarget(strongSelf, action: #selector(strongSelf.didTapTabButton(_:)), for: .touchUpInside)
                         item.viewController.removeFromParentViewController()
                         return item
                     }
@@ -118,14 +131,39 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
                 itemsSettingHandler?()
                 itemsSettingHandler = nil
             }
+            rearrangeTab()
         }
     }
     
     /// The width of the base view. Default value is screen width
-    open var width: CGFloat! = UIScreen.main.bounds.size.width
+    open var width: CGFloat = UIScreen.main.bounds.size.width
     
-    /// Triggered by switch behavior
-    open var switchHandler: ELSwitchHandler?
+    /// Distance between buttons. Default value: 30.0 for scrollable, 0 for unscrollable.
+    open var tabSpacing: CGFloat {
+        get {
+            switch tabBarType {
+            case .equal_scrollable, .unequal_scrollable:
+                return _scrollableTabSpacing
+            case .equal_unscrollable, .unequal_unscrollable:
+                return _unscrollableTabSpacing
+            }
+        }
+        set {
+            _scrollableTabSpacing = newValue
+            _unscrollableTabSpacing = newValue
+            rearrangeTab()
+        }
+    }
+    
+    var _unscrollableTabSpacing: CGFloat = 0
+    var _scrollableTabSpacing: CGFloat = 30
+    
+    /// The zoom factor for buttons, only available in scrollable tabs. Default value: 1.05
+    open var buttonHorizontalZoomFactor: CGFloat = 1.05 {
+        didSet {
+            rearrangeTab()
+        }
+    }
     
     /// Height of button
     open var tabButtonHeight: CGFloat = 44 {
@@ -204,6 +242,9 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         }
     }
     
+    /// Triggered by switch behavior
+    open var switchHandler: ELSwitchHandler?
+    
     // MARK: - LifeCircle
     
     open override func viewDidLoad() {
@@ -257,10 +298,8 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     public init(width: CGFloat = UIScreen.main.bounds.size.width, type: ELTabBarType = ELTabBarType.equal_unscrollable) {
         super.init(nibName: nil, bundle: nil)
-        defer {
-            self.width = width
-            self.tabBarType = type
-        }
+        self.width = width
+        self.tabBarType = type
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -286,6 +325,66 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     // MARK: - Operate
     
+    open func rearrangeTab() {
+        typeSettingHandler = { [weak self, tabBarType, tabSpacing, buttonHorizontalZoomFactor] in
+            if let strongSelf = self {
+                strongSelf.tabStackView.spacing = tabSpacing
+                switch tabBarType {
+                case .equal_unscrollable:
+                    strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                        make.left.top.right.equalTo(strongSelf.tab)
+                        make.height.equalTo(strongSelf.tabButtonHeight)
+                        make.width.equalTo(strongSelf.width)
+                    }
+                    strongSelf.tabStackView.distribution = .fillEqually
+                case .equal_scrollable:
+                    var buttonWidth: CGFloat = 0.0
+                    for item in strongSelf.items {
+                        item.button.sizeToFit()
+                        if item.button.frame.width > buttonWidth {
+                            buttonWidth = item.button.frame.width
+                        }
+                    }
+                    buttonWidth *= buttonHorizontalZoomFactor
+                    let totalWidth = (buttonWidth + tabSpacing) * CGFloat(strongSelf.items.count) - tabSpacing
+                    strongSelf.tabStackView.spacing = strongSelf.tabSpacing
+                    strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                        make.left.top.right.equalTo(strongSelf.tab)
+                        make.height.equalTo(strongSelf.tabButtonHeight)
+                        make.width.equalTo(totalWidth)
+                    }
+                    strongSelf.tabStackView.distribution = .fillEqually
+                case .unequal_unscrollable:
+                    strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                        make.left.top.right.equalTo(strongSelf.tab)
+                        make.height.equalTo(strongSelf.tabButtonHeight)
+                        make.width.equalTo(strongSelf.width)
+                    }
+                    strongSelf.tabStackView.distribution = .fillProportionally
+                case .unequal_scrollable:
+                    var tabWidth: CGFloat = 0.0
+                    for item in strongSelf.items {
+                        item.button.sizeToFit()
+                        tabWidth += (item.button.frame.width * buttonHorizontalZoomFactor)
+                    }
+                    tabWidth += tabSpacing * CGFloat(strongSelf.items.count) - tabSpacing
+                    strongSelf.tabStackView.spacing = strongSelf.tabSpacing
+                    strongSelf.tabStackView.snp.remakeConstraints { (make) in
+                        make.left.top.right.equalTo(strongSelf.tab)
+                        make.height.equalTo(strongSelf.tabButtonHeight)
+                        make.width.equalTo(tabWidth)
+                    }
+                    strongSelf.tabStackView.distribution = .fillProportionally
+                }
+                strongSelf.setCurrentIndex(strongSelf._currentIndex, animated: false)
+            }
+        }
+        if isViewDidLoadExecuted && (typeSettingHandler != nil) {
+            typeSettingHandler?()
+            typeSettingHandler = nil
+        }
+    }
+    
     /// Set the current index
     ///
     /// - Parameters:
@@ -303,50 +402,10 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         _currentIndex = index
     }
     
-    private var _currentIndex: Int = 0
-    
     open func didTapTabButton(_ button: UIButton) {
         setCurrentIndex(button.tag, animated: true)
         if let handler = switchHandler {
             handler (button.tag, .buttonTap)
-        }
-    }
-    
-    open var tabBarType: ELTabBarType = ELTabBarType.equal_unscrollable {
-        didSet {
-            typeSettingHandler = { [weak self] in
-                if let strongSelf = self {
-                    switch strongSelf.tabBarType {
-                    case .equal_unscrollable:
-                        strongSelf.tabStackView.snp.remakeConstraints { (make) in
-                            make.left.top.right.equalTo(strongSelf.tab)
-                            make.height.equalTo(strongSelf.tabButtonHeight)
-                            make.width.equalTo(strongSelf.width)
-                        }
-                        strongSelf.tabStackView.distribution = .fillEqually
-                    case .equal_scrollable:
-                        var buttonWidth: CGFloat = 0.0
-                        for item in strongSelf.items {
-                            item.button.sizeToFit()
-                            if item.button.frame.width > buttonWidth {
-                                buttonWidth = item.button.frame.width
-                            }
-                        }
-                        buttonWidth += 30
-                        strongSelf.tabStackView.snp.remakeConstraints { (make) in
-                            make.left.top.right.equalTo(strongSelf.tab)
-                            make.height.equalTo(strongSelf.tabButtonHeight)
-                            make.width.equalTo(buttonWidth * CGFloat(strongSelf.items.count))
-                        }
-                        strongSelf.tabStackView.distribution = .fillEqually
-                    }
-                    strongSelf.setCurrentIndex(strongSelf._currentIndex, animated: false)
-                }
-            }
-            if isViewDidLoadExecuted && (typeSettingHandler != nil) {
-                typeSettingHandler?()
-                typeSettingHandler = nil
-            }
         }
     }
     
@@ -378,7 +437,6 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         var rightWidth: CGFloat
         var centerPosition: CGFloat
         var sliderWidth: CGFloat
-        
         if currentLeftScreen < 0 {
             leftWidth = (items.first?.button.frame.width)!
             rightWidth = (items.first?.button.frame.width)!
@@ -401,13 +459,13 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
             leftWidth = items[currentLeftScreen].button.frame.width
             rightWidth = items[currentRightScreen].button.frame.width
             sliderWidth  = (leftWidth * (1 - percentage)) + (rightWidth * percentage)
-            centerPosition = (items[currentLeftScreen].button.center.x) + percentage * (leftWidth + rightWidth)/2
-            if (percentage * (leftWidth + rightWidth)/2) < leftWidth/2 {
+            centerPosition = (items[currentLeftScreen].button.center.x) + percentage * ((leftWidth + rightWidth) / 2 + tabSpacing)
+            if (percentage * (leftWidth + rightWidth) / 2) < leftWidth / 2 {
                 for itemGroup in items.enumerated() {
                     itemGroup.element.button.setSelectedIfNot(itemGroup.offset == currentLeftScreen)
                 }
             }
-            if (percentage * (leftWidth + rightWidth)/2) > leftWidth/2 {
+            if (percentage * (leftWidth + rightWidth) / 2) > leftWidth / 2 {
                 for itemGroup in items.enumerated() {
                     itemGroup.element.button.setSelectedIfNot(itemGroup.offset == currentRightScreen)
                 }

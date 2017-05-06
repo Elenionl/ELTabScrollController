@@ -12,18 +12,18 @@
 
 import UIKit
 
-class ScrollableTabScrollController: ELTabScrollController {
+class EUTabScrollController: ELTabScrollController {
     // MARK: - LifeCircle
     init() {
-        super.init(type: .equal_scrollable)
-        let ctrl1 = ViewController(nibName: nil, bundle: nil)
-        let ctrl2 = ViewController(nibName: nil, bundle: nil)
-        let ctrl3 = ViewController(nibName: nil, bundle: nil)
-        let ctrl4 = ViewController(nibName: nil, bundle: nil)
-        let item1 = ELTabScrollItem(title: "Tab 1 View Controller", image: nil, viewController: ctrl1, view: ctrl1.tableView)
-        let item2 = ELTabScrollItem(title: "Tab 2 View Controller", image: nil, viewController: ctrl2, view: ctrl2.tableView)
-        let item3 = ELTabScrollItem(title: "Tab 3 View Controller", image: nil, viewController: ctrl3, view: ctrl3.tableView)
-        let item4 = ELTabScrollItem(title: "Tab 4 View Controller", image: nil, viewController: ctrl4, view: ctrl4.tableView)
+        super.init()
+        let ctrl1 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl2 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl3 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl4 = ChildViewController(nibName: nil, bundle: nil)
+        let item1 = ELTabScrollItem(title: nil, image: #imageLiteral(resourceName: "Icon"), viewController: ctrl1, view: ctrl1.tableView)
+        let item2 = ELTabScrollItem(title: nil, image: #imageLiteral(resourceName: "Icon"), viewController: ctrl2, view: ctrl2.tableView)
+        let item3 = ELTabScrollItem(title: nil, image: #imageLiteral(resourceName: "Icon"), viewController: ctrl3, view: ctrl3.tableView)
+        let item4 = ELTabScrollItem(title: nil, image: #imageLiteral(resourceName: "Icon"), viewController: ctrl4, view: ctrl4.tableView)
         items = [item1, item2, item3, item4]
     }
     
@@ -33,7 +33,7 @@ class ScrollableTabScrollController: ELTabScrollController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Equal Scrollable"
+        self.title = "Equal UnScrollable"
         tab.backgroundColor = UIColor.orange
         sliderView.backgroundColor = .white
         container.backgroundColor = UIColor.lightGray
@@ -42,6 +42,7 @@ class ScrollableTabScrollController: ELTabScrollController {
         buttonFont = UIFont.boldSystemFont(ofSize: 18)
         buttonSelectedTitleColor = UIColor.white
         buttonNormalTitleColor = UIColor.lightGray
+        tabSpacing = 10
         switchHandler = { (index, type) in
             print(index, type)
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeController: ViewController {
+class HomeController: UIViewController {
     lazy var equalUnscrollable: UIButton = {
         let view = UIButton(type: .custom)
         view.setTitle("Equal Unscrollable", for: .normal)
@@ -26,13 +26,37 @@ class HomeController: ViewController {
         return view
     }()
     
+    lazy var unequalUnscrollable: UIButton = {
+        let view = UIButton(type: .custom)
+        view.setTitle("Unequal Unscrollable", for: .normal)
+        view.tag = 2
+        view.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        view.setTitleColor(.blue, for: .normal)
+        return view
+    }()
+    
+    lazy var unequalScrollable: UIButton = {
+        let view = UIButton(type: .custom)
+        view.setTitle("Unequal Scrollable", for: .normal)
+        view.tag = 3
+        view.addTarget(self, action: #selector(didTapButton(_:)), for: .touchUpInside)
+        view.setTitleColor(.blue, for: .normal)
+        return view
+    }()
+    
     func didTapButton(_ button: UIButton) {
         switch button.tag {
         case 0:
-            let ctrl = UnscrollableTabScrollController()
+            let ctrl = EUTabScrollController()
             navigationController?.pushViewController(ctrl, animated: true)
         case 1:
-            let ctrl = ScrollableTabScrollController()
+            let ctrl = ESTabScrollController()
+            navigationController?.pushViewController(ctrl, animated: true)
+        case 2:
+            let ctrl = UUTabScrollController()
+            navigationController?.pushViewController(ctrl, animated: true)
+        case 3:
+            let ctrl = USTabScrollController()
             navigationController?.pushViewController(ctrl, animated: true)
         default:
             return
@@ -43,6 +67,8 @@ class HomeController: ViewController {
         super.viewDidLoad()
         view.addSubview(equalUnscrollable)
         view.addSubview(equalScrollable)
+        view.addSubview(unequalUnscrollable)
+        view.addSubview(unequalScrollable)
         
         equalUnscrollable.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
@@ -51,6 +77,14 @@ class HomeController: ViewController {
         equalScrollable.snp.makeConstraints { (make) in
             make.centerX.equalToSuperview()
             make.top.equalTo(60)
+        }
+        unequalUnscrollable.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(100)
+        }
+        unequalScrollable.snp.makeConstraints { (make) in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(140)
         }
     }
     

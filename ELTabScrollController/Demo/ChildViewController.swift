@@ -12,7 +12,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ChildViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     lazy var tableView: UITableView = {
         let tableView = UITableView(frame: .null, style: UITableViewStyle.grouped)

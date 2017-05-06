@@ -12,18 +12,18 @@
 
 import UIKit
 
-class UnscrollableTabScrollController: ELTabScrollController {
+class USTabScrollController: ELTabScrollController {
     // MARK: - LifeCircle
     init() {
-        super.init()
-        let ctrl1 = ViewController(nibName: nil, bundle: nil)
-        let ctrl2 = ViewController(nibName: nil, bundle: nil)
-        let ctrl3 = ViewController(nibName: nil, bundle: nil)
-        let ctrl4 = ViewController(nibName: nil, bundle: nil)
+        super.init(type: .unequal_scrollable)
+        let ctrl1 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl2 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl3 = ChildViewController(nibName: nil, bundle: nil)
+        let ctrl4 = ChildViewController(nibName: nil, bundle: nil)
         let item1 = ELTabScrollItem(title: "Tab 1", image: nil, viewController: ctrl1, view: ctrl1.tableView)
-        let item2 = ELTabScrollItem(title: "Tab 2", image: nil, viewController: ctrl2, view: ctrl2.tableView)
-        let item3 = ELTabScrollItem(title: "Tab 3", image: nil, viewController: ctrl3, view: ctrl3.tableView)
-        let item4 = ELTabScrollItem(title: "Tab 4", image: nil, viewController: ctrl4, view: ctrl4.tableView)
+        let item2 = ELTabScrollItem(title: "Tab 2 so much", image: nil, viewController: ctrl2, view: ctrl2.tableView)
+        let item3 = ELTabScrollItem(title: "Tab 3 too", image: nil, viewController: ctrl3, view: ctrl3.tableView)
+        let item4 = ELTabScrollItem(title: "Tab 4 good", image: nil, viewController: ctrl4, view: ctrl4.tableView)
         items = [item1, item2, item3, item4]
     }
     
@@ -33,7 +33,7 @@ class UnscrollableTabScrollController: ELTabScrollController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Equal UnScrollable"
+        self.title = "Unequal Scrollable"
         tab.backgroundColor = UIColor.orange
         sliderView.backgroundColor = .white
         container.backgroundColor = UIColor.lightGray
@@ -42,6 +42,12 @@ class UnscrollableTabScrollController: ELTabScrollController {
         buttonFont = UIFont.boldSystemFont(ofSize: 18)
         buttonSelectedTitleColor = UIColor.white
         buttonNormalTitleColor = UIColor.lightGray
+        buttonSelectedBackgroudColor = UIColor.green
+        buttonNormalBackgroudColor = UIColor.gray
+        sliderBackgroundView.backgroundColor = UIColor.yellow
+        sliderView.backgroundColor = UIColor.red
+        tabSpacing = 0
+        buttonHorizontalZoomFactor = 1.5
         switchHandler = { (index, type) in
             print(index, type)
         }
