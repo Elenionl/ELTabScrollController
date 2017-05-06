@@ -194,8 +194,8 @@ open var buttonNormalTitleColor: UIColor?
 
 ## TODO
 
-* ❌ More Tab Style
-* ❌ More Slider Style
+* ✅  More Tab Style
+* ❎  More Slider Style
 
 ## Author
 
