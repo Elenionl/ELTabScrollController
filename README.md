@@ -11,7 +11,7 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 
 
 * **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
-## [中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md)
+<!-- ## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md) -->
 
 
 ## Screenshots
@@ -23,7 +23,7 @@ Easily Used Tab Scroll ViewController build with Swift 3
 
 ## How to Install
 
-### Using [CocoaPods](https://cocoapods.org/pods/ELTabScrollController)
+### Using [CocoaPods](http://cocoapods.org)
 
 * Add this line to your ``podfile`` :
 ``pod 'ELTabScrollController'``
@@ -57,7 +57,7 @@ class TabScrollController: ELTabScrollController {
         super.init(width: 200, type: .equal_scrollable)
     }
 ```
-* add Items
+* add Items, who is authorized to manage a button and button's associating viewController (including view).
 ```Swift
 override func viewDidLoad() {
   super.viewDidLoad()
@@ -72,6 +72,18 @@ override func viewDidLoad() {
   items = [item1, item2, item3, item4]
 }
 ```
+----------------------
+### ELTabScrollController Types
+There are four types:
+* equal_unscrollable
+* equal_scrollable
+* unequal_unscrollable
+* unequal_scrollable
+
+**equal** means all buttons width is equal
+**unequal** means button width is relevant with its contentSize
+**unscrollable** means the width of tab is equal to ELTabScrollController.width
+**scrollable** means the width of tab can be bigger than width of ELTabScrollController. And tab is scrollable
 ----------------------
 ### If You Want to Use Other View of the Child ViewController
 
@@ -111,7 +123,8 @@ let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), view
 public init(button: UIButton, viewController: UIViewController, view: UIView?)
 ```
 --------------------
-### ELTabScrollController is Easily Customizable
+### ViewController is Easily Customizable
+***:warning: Settings are expected in viewDidLoad. Or will cause exception***
 ```Swift
 override func viewDidLoad() {
   super.viewDidLoad()
@@ -134,6 +147,14 @@ override func viewDidLoad() {
 
 ```Swift
 // MARK: - Settings
+
+open var tabBarType: ELTabBarType = ELTabBarType.equal_unscrollable
+
+/// Distance between buttons. Default value: 30.0 for scrollable, 0 for unscrollable.
+open var tabSpacing: CGFloat
+
+/// The zoom factor for buttons, only available in scrollable tabs. Default value: 1.05
+open var buttonHorizontalZoomFactor: CGFloat = 1.05
 
 /// Items containing buttons and viewControllers
 open var items: [ELTabScrollItem]! = []

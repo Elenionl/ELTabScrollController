@@ -66,6 +66,18 @@ override func viewDidLoad() {
 }
 ```
 ----------------------
+### ELTabScrollController 的类型
+ELTabScrollController 共有四种类型
+* equal_unscrollable
+* equal_scrollable
+* unequal_unscrollable
+* unequal_scrollable
+
+**equal** 所有按钮宽度相等
+**unequal** 按钮宽度由其本身的 contentSize 决定
+**unscrollable** tab 不可滚动且宽度等于 ELTabScrollController.width
+**scrollable** tab 可以滚动, 宽度可能大于 ELTabScrollController.width
+----------------------
 ### 如果你想要只显示 ChildViewController 的某一个 view, 只需要如下操作
 
 ```Swift
@@ -127,6 +139,16 @@ override func viewDidLoad() {
 
 ```Swift
 // MARK: - Settings
+
+/// Items containing buttons and viewControllers
+
+open var tabBarType: ELTabBarType = ELTabBarType.equal_unscrollable
+
+/// Distance between buttons. Default value: 30.0 for scrollable, 0 for unscrollable.
+open var tabSpacing: CGFloat
+
+/// The zoom factor for buttons, only available in scrollable tabs. Default value: 1.05
+open var buttonHorizontalZoomFactor: CGFloat = 1.05
 
 /// Items containing buttons and viewControllers
 open var items: [ELTabScrollItem]! = []
