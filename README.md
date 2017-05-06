@@ -11,7 +11,7 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 
 
 * **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
-<!-- ## 请点击[中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md) -->
+## [中文说明](https://github.com/Elenionl/ELTabScrollController/blob/master/README%20IN%20CHINESE.md)
 
 
 ## Screenshots
@@ -23,7 +23,7 @@ Easily Used Tab Scroll ViewController build with Swift 3
 
 ## How to Install
 
-### Using [CocoaPods](http://cocoapods.org)
+### Using [CocoaPods](https://cocoapods.org/pods/ELTabScrollController)
 
 * Add this line to your ``podfile`` :
 ``pod 'ELTabScrollController'``
@@ -111,8 +111,7 @@ let item4 = ELTabScrollItem(title: "Tab 4", image: UIImage(named: "image"), view
 public init(button: UIButton, viewController: UIViewController, view: UIView?)
 ```
 --------------------
-### ViewController is Easily Customizable
-***:warning: Settings are expected in viewDidLoad. Or will cause exception***
+### ELTabScrollController is Easily Customizable
 ```Swift
 override func viewDidLoad() {
   super.viewDidLoad()
