@@ -7,7 +7,7 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 [![Swift 3.0](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://img.shields.io/badge/Swift-3.0-blue.svg)
 [![iOS 9.0](https://img.shields.io/badge/iOS-9.0-blue.svg)](https://img.shields.io/badge/iOS-9.0-blue.svg)
 
-* **:warning: ELTabScrollController requires Swift Version higher than 3.0.**
+* **:warning: ELTabScrollController requires Swift Version as 3.X
 
 
 * **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
@@ -205,4 +205,4 @@ Hanping Xu ([Elenionl](https://github.com/Elenionl)), stellanxu@gmail.com
 --------------------------
 ## License
 
-ELTabScrollController is available under the MIT license, see the LICENSE file for more information.   
+ELTabScrollController is available under the MIT license, see the LICENSE file for more information.
