@@ -6,7 +6,7 @@ ELTabScrollChontroller: 简单易用的 Tab Scroll Controller, 使用 Swift 3 �
 [![CocoaPods](https://img.shields.io/cocoapods/l/ELPickerView.svg?style=flat)](https://cocoapods.org/pods/ELPickerView)
 [![Platform](https://img.shields.io/cocoapods/p/ELPickerView.svg?style=flat)](https://cocoapods.org/pods/ELPickerView)
 
-**:warning: ELTabScrollChontroller 适用于 Swift 3 和 iOS 9.**
+**:warning: ELTabScrollChontroller 适用于 Swift 3.X 和 iOS 9.X
 
 ## 截图
  简单易用的 Tab Scroll Controller, 使用 Swift 3 开发
@@ -74,9 +74,14 @@ ELTabScrollController 共有四种类型
 * unequal_scrollable
 
 **equal** 所有按钮宽度相等
+
 **unequal** 按钮宽度由其本身的 contentSize 决定
+
 **unscrollable** tab 不可滚动且宽度等于 ELTabScrollController.width
+
 **scrollable** tab 可以滚动, 宽度可能大于 ELTabScrollController.width
+
+
 ----------------------
 ### 如果你想要只显示 ChildViewController 的某一个 view, 只需要如下操作
 
@@ -180,8 +185,8 @@ open var buttonNormalTitleColor: UIColor?
 ------------
 ## 要求
 
-* Xcode 8.0
-* Swift 3.0
+* Xcode 8.X
+* Swift 3.X
 * Using ARC
 * iOS 9.0
 --------------

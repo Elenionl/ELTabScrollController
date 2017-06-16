@@ -80,10 +80,17 @@ There are four types:
 * unequal_unscrollable
 * unequal_scrollable
 
+
 **equal** means all buttons width is equal
+
 **unequal** means button width is relevant with its contentSize
+
 **unscrollable** means the width of tab is equal to ELTabScrollController.width
+
 **scrollable** means the width of tab can be bigger than width of ELTabScrollController. And tab is scrollable
+
+
+
 ----------------------
 ### If You Want to Use Other View of the Child ViewController
 
@@ -186,8 +193,8 @@ open var buttonNormalTitleColor: UIColor?
 ------------
 ## Requirements
 
-* Xcode 8.0
-* Swift 3.0
+* Xcode 8.X
+* Swift 3.X
 * Using ARC
 * iOS 9.0
 --------------
