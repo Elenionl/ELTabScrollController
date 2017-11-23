@@ -2,8 +2,8 @@
 Pod::Spec.new do |s|
 
   s.name         = "ELTabScrollController"
-  s.version      = "4.0.0"
-  s.summary      = "Easily Used Tab Scroll ViewController with Swift 3"
+  s.version      = "4.0.1"
+  s.summary      = "Easily Used Tab Scroll ViewController with Swift 4"
   s.description  = <<-DESC
   ELTabScrollController is an easily used Tab Scroll Controller suit. It is build with pure code without storyboard or xib, making it easy to inherate.
   (Drawing lines is quite boring, and may cause bugs hard to fix)

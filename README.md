@@ -1,13 +1,13 @@
-ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
+ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 4
 ======================================
 
 [![Build Status](https://travis-ci.org/Elenionl/ELTabScrollController.svg?branch=master)](https://travis-ci.org/Elenionl/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/v/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/l/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
-[![Swift 3.0](https://img.shields.io/badge/Swift-3.0-blue.svg)](https://img.shields.io/badge/Swift-3.0-blue.svg)
+[![Swift 4.0](https://img.shields.io/badge/Swift-4.0-blue.svg)](https://img.shields.io/badge/Swift-4.0-blue.svg)
 [![iOS 9.0](https://img.shields.io/badge/iOS-9.0-blue.svg)](https://img.shields.io/badge/iOS-9.0-blue.svg)
 
-* **:warning: ELTabScrollController requires Swift Version as 3.X
+* **:warning: ELTabScrollController requires Swift Version as 4.X
 
 
 * **:warning: ELTabScrollController requires iOS Version higher than 9.0. (95% of iOS devices are higher than 9.0)**
@@ -15,7 +15,7 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 3
 
 
 ## Screenshots
-Easily Used Tab Scroll ViewController build with Swift 3
+Easily Used Tab Scroll ViewController build with Swift 4
 
 
 ![screenshots_1](https://raw.githubusercontent.com/Elenionl/ELTabScrollController/master/screenshots/2017-04-23%2000.40.02.gif)
@@ -194,7 +194,7 @@ open var buttonNormalTitleColor: UIColor?
 ## Requirements
 
 * Xcode 8.X
-* Swift 3.X
+* Swift 4.X
 * Using ARC
 * iOS 9.0
 --------------
