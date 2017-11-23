@@ -27,6 +27,8 @@ Easily Used Tab Scroll ViewController build with Swift 4
 
 * Add this line to your ``podfile`` :
 ``pod 'ELTabScrollController'``
+* Swift 3.* use 3.0.0 pod version
+* Swift 4.* use 4.* pod version
 * Run `pod install` with Terminal
 * Then everything is done!
 -----------------------

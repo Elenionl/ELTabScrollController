@@ -21,6 +21,8 @@ ELTabScrollChontroller: 简单易用的 Tab Scroll Controller, 使用 Swift 3 �
 -----------
 * 在 ``podfile`` 中添加下面一行代码 :
 ``pod 'ELTabScrollChontroller'``
+* Swift 3.* 对应 3.0.0 版本的 pod
+* Swift 4.* 对应 4.* 版本的 pod
 * 使用 Terminal 运行 `pod install`
 * 完成!
 -----------
