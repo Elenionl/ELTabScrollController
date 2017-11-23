@@ -44,7 +44,7 @@ class HomeController: UIViewController {
         return view
     }()
     
-    func didTapButton(_ button: UIButton) {
+    @objc func didTapButton(_ button: UIButton) {
         switch button.tag {
         case 0:
             let ctrl = EUTabScrollController()

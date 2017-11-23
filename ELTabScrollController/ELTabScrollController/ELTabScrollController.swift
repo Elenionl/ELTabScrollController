@@ -98,7 +98,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
     
     open var items: [ELTabScrollItem]! = [] {
         didSet {
-            itemsSettingHandler = { [weak self] Void in
+            itemsSettingHandler = { [weak self] in
                 if let strongSelf = self {
                     _ = oldValue.map { (item) -> ELTabScrollItem in
                         strongSelf.tabStackView.removeArrangedSubview(item.button)
@@ -402,7 +402,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         _currentIndex = index
     }
     
-    open func didTapTabButton(_ button: UIButton) {
+    @objc open func didTapTabButton(_ button: UIButton) {
         setCurrentIndex(button.tag, animated: true)
         if let handler = switchHandler {
             handler (button.tag, .buttonTap)
