@@ -2,7 +2,7 @@ ELTabScrollController: Easily Used Tab Scroll ViewController build with Swift 4
 ======================================
 
 [![Build Status](https://travis-ci.org/Elenionl/ELTabScrollController.svg?branch=master)](https://travis-ci.org/Elenionl/ELTabScrollController)
-[![Apps Using](https://img.shields.io/cocoapods/at/ELTabScrollController.svg?label=Apps%20Using%ELTabScrollController&colorB=28B9FE)](http://cocoapods.org/pods/ELTabScrollController)
+[![Apps Using](https://img.shields.io/cocoapods/at/ELTabScrollController.svg?label=Apps%20Using%20ELTabScrollController&colorB=28B9FE)](http://cocoapods.org/pods/ELTabScrollController)
 [![Downloads](https://img.shields.io/cocoapods/dt/ELTabScrollController.svg?label=Total%20Downloads&colorB=28B9FE)](http://cocoapods.org/pods/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/v/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
 [![CocoaPods](https://img.shields.io/cocoapods/l/ELTabScrollController.svg?style=flat)](https://cocoapods.org/pods/ELTabScrollController)
