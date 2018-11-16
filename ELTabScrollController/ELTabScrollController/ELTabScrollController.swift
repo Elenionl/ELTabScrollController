@@ -100,7 +100,7 @@ open class ELTabScrollController: UIViewController, UIScrollViewDelegate {
         didSet {
             itemsSettingHandler = { [weak self] in
                 if let strongSelf = self {
-                    _ = oldValue.map { (item) -> ELTabScrollItem in
+                    _ = oldValue?.map { (item) -> ELTabScrollItem in
                         strongSelf.tabStackView.removeArrangedSubview(item.button)
                         item.view.snp.removeConstraints()
                         item.view.removeFromSuperview()
